@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To-Do List</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #040507;
+			padding: 20px;
+		}
+		h1 {
+    text-align: center;
+    color: #5B5B5B;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #825500, 0 0 70px #826a00, 0 0 80px #4B0082, 0 0 100px #4B0082, 0 0 150px #4B0082;
+    animation: neon 1.5s ease-in-out infinite alternate;
+    font-family: 'Pacifico', cursive;
+    font-size: 4rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    background-image: linear-gradient(to right, #020082, #FF00FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes neon {
+    from {
+        text-shadow: 0 0 0px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #820011, 0 0 70px #824500, 0 0 80px #4B0082, 0 0 100px #4B0082, 0 0 150px #4B0082;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #820016, 0 0 80px #824e00, 0 0 90px #4B0082, 0 0 110px #4B0082, 0 0 160px #4B0082;
+    }
+}
+
+
+		input[type="text"] {
+			padding: 10px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 20px;
+			width: 99%;
+		}
+		button {
+    background-color: purple;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 1s ease;
+}
+
+button:hover {
+    background-color: black;
+}
+
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			background-color: white;
+			padding: 10px;
+			border-radius: 5px;
+			margin-bottom: 10px;
+			box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		li:hover {
+			background-color: #f5f5f5;
+		}
+		li button {
+			background-color: #E57373;
+			color: white;
+			padding: 5px 10px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		li button:hover {
+			background-color: #B71C1C;
+		}
+	</style>
+</head>
+<body>
+	<h1>To-Do List</h1>
+	<input type="text" id="input">
+	<button onclick="addItem()">Add Item</button>
+	<ul id="list">
+	</ul>
+
+	<script>
+		function addItem() {
+    // get input value
+    var inputValue = document.getElementById("input").value;
+
+    // create new list item
+    var li = document.createElement("li");
+    var itemText = document.createTextNode(inputValue);
+    li.appendChild(itemText);
+
+	// create delete button for list item
+	var deleteButton = document.createElement("button");
+    var buttonText = document.createTextNode("Delete");
+    deleteButton.appendChild(buttonText);
+    deleteButton.onclick = function() {
+        li.remove();
+    };
+    li.appendChild(deleteButton);
+
+    // add list item to list
+    var ul = document.getElementById("list");
+    ul.appendChild(li);
+
+    // clear input field
+    document.getElementById("input").value = "";
+}
+	</script>
+	
+</body>
+</html>
